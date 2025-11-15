@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Unit Converter</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    h1 { text-align: center; }
+    label, select, input { display: block; margin: 10px 0; width: 100%; }
+    button { padding: 10px; width: 100%; margin-top: 10px; }
+    #result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Universal Unit Converter</h1>
+  <label for="conversionType">Choose conversion:</label>
+  <select id="conversionType">
+    <option value="mmToIn">Millimeter → Inches</option>
+    <option value="inToMm">Inches → Millimeter</option>
+    <option value="mmToMils">Millimeter → Mils</option>
+    <option value="milsToMm">Mils → Millimeter</option>
+    <option value="milsToIn">Mils → Inches</option>
+    <option value="inToMils">Inches → Mils</option>
+    <option value="cuInToCuMm">Cubic Inches → Cubic Millimeters</option>
+    <option value="cuMmToCuIn">Cubic Millimeters → Cubic Inches</option>
+    <option value="sqInToSqMm">Square Inches → Square Millimeters</option>
+    <option value="sqMmToSqIn">Square Millimeters → Square Inches</option>
+    <option value="uinToMicron">Microinches → Microns</option>
+    <option value="micronToUin">Microns → Microinches</option>
+    <option value="micronToMm">Microns → Millimeters</option>
+    <option value="mmToMicron">Millimeters → Microns</option>
+    <option value="cuMmToMl">Cubic Millimeters → Milliliters</option>
+    <option value="mlToCuMm">Milliliters → Cubic Millimeters</option>
+    <option value="kgfcm2ToPsi">kgf/cm² → psi</option>
+    <option value="psiToKgfcm2">psi → kgf/cm²</option>
+    <option value="cuInToMl">Cubic Inches → Milliliters</option>
+    <option value="mlToCuIn">Milliliters → Cubic Inches</option>
+  </select>
+
+  <label for="inputValue">Enter value:</label>
+  <input type="number" id="inputValue" placeholder="Enter value to convert" />
+
+  <button onclick="convert()">Convert</button>
+  <div id="result"></div>
+
+  <script>
+    function convert() {
+      const type = document.getElementById("conversionType").value;
+      const value = parseFloat(document.getElementById("inputValue").value);
+      let result = "";
+
+      if (isNaN(value)) {
+        result = "Please enter a valid number.";
+      } else {
+        switch (type) {
+          case "mmToIn": result = value / 25.4 + " in"; break;
+          case "inToMm": result = value * 25.4 + " mm"; break;
+          case "mmToMils": result = value * 39.3701 + " mils"; break;
+          case "milsToMm": result = value / 39.3701 + " mm"; break;
+          case "milsToIn": result = value / 1000 + " in"; break;
+          case "inToMils": result = value * 1000 + " mils"; break;
+          case "cuInToCuMm": result = value * 16387.064 + " mm³"; break;
+          case "cuMmToCuIn": result = value / 16387.064 + " in³"; break;
+          case "sqInToSqMm": result = value * 645.16 + " mm²"; break;
+          case "sqMmToSqIn": result = value / 645.16 + " in²"; break;
+          case "uinToMicron": result = value * 0.0254 + " µm"; break;
+          case "micronToUin": result = value / 0.0254 + " µin"; break;
+          case "micronToMm": result = value / 1000 + " mm"; break;
+          case "mmToMicron": result = value * 1000 + " µm"; break;
+          case "cuMmToMl": result = value / 1000 + " mL"; break;
+          case "mlToCuMm": result = value * 1000 + " mm³"; break;
+          case "kgfcm2ToPsi": result = value * 14.2233 + " psi"; break;
+          case "psiToKgfcm2": result = value / 14.2233 + " kgf/cm²"; break;
+          case "cuInToMl": result = value * 16.3871 + " mL"; break;
+          case "mlToCuIn": result = value / 16.3871 + " in³"; break;
+          default: result = "Unknown conversion type.";
+        }
+      }
+
+      document.getElementById("result").textContent = "Result: " + result;
+    }
+  </script>
+</body>
+</html>
