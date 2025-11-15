@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Unit Converter</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
-    h1 { text-align: center; }
-    label, select, input { display: block; margin: 10px 0; width: 100%; }
-    button { padding: 10px; width: 100%; margin-top: 10px; }
-    #result { margin-top: 20px; font-weight: bold; }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Unit Converter & Process Capabilities</title>
+<style>
+  body{font-family:Arial,sans-serif;padding:16px;max-width:860px;margin:auto;background:#f2f2f2}
+  h1{margin:0 0 12px;text-align:center;font-size:1.4rem}
+  section{background:#fff;padding:14px;margin:14px 0;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+  label{display:block;margin:10px 0 6px;font-weight:bold}
+  select,input,button{width:100%;padding:10px;font-size:1rem;margin-bottom:10px;border-radius:6px;border:1px solid #ccc}
+  button{background:#0078d4;color:#fff;border:none;cursor:pointer}
+  button:hover{background:#005fa3}
+  #result,#characteristics{margin-top:8px;font-weight:bold;background:#f9f9f9;padding:10px;border-radius:6px;border:1px solid #ddd;white-space:pre-wrap}
+</style>
 </head>
 <body>
+<section>
   <h1>Universal Unit Converter</h1>
   <label for="conversionType">Choose conversion:</label>
   <select id="conversionType">
@@ -37,49 +41,90 @@
     <option value="cuInToMl">Cubic Inches → Milliliters</option>
     <option value="mlToCuIn">Milliliters → Cubic Inches</option>
   </select>
-
   <label for="inputValue">Enter value:</label>
-  <input type="number" id="inputValue" placeholder="Enter value to convert" />
-
+  <input type="number" id="inputValue" placeholder="Enter value to convert"/>
   <button onclick="convert()">Convert</button>
   <div id="result"></div>
+</section>
 
-  <script>
-    function convert() {
-      const type = document.getElementById("conversionType").value;
-      const value = parseFloat(document.getElementById("inputValue").value);
-      let result = "";
+<section>
+  <h1>Process Capabilities</h1>
+  <label for="processSelect">Select a Process:</label>
+  <select id="processSelect">
+    <option value="">-- Choose a Process --</option>
+    <option value="ENIG plating">ENIG plating</option>
+    <option value="Hard Gold">Hard Gold</option>
+    <option value="TIN plating">TIN plating</option>
+    <option value="ImAg plating">ImAg plating</option>
+    <option value="Vacuum Press">Vacuum Press</option>
+    <option value="Fastlam">Fastlam</option>
+    <option value="Auto Tack">Auto Tack</option>
+    <option value="UHT">UHT</option>
+    <option value="Guidehole">Guidehole</option>
+    <option value="E-test">E-test</option>
+    <option value="Hi-Pot">Hi-Pot</option>
+    <option value="SMT">SMT</option>
+    <option value="Conformal">Conformal</option>
+    <option value="Crimping">Crimping</option>
+  </select>
+  <div id="characteristics"></div>
+</section>
 
-      if (isNaN(value)) {
-        result = "Please enter a valid number.";
-      } else {
-        switch (type) {
-          case "mmToIn": result = value / 25.4 + " in"; break;
-          case "inToMm": result = value * 25.4 + " mm"; break;
-          case "mmToMils": result = value * 39.3701 + " mils"; break;
-          case "milsToMm": result = value / 39.3701 + " mm"; break;
-          case "milsToIn": result = value / 1000 + " in"; break;
-          case "inToMils": result = value * 1000 + " mils"; break;
-          case "cuInToCuMm": result = value * 16387.064 + " mm³"; break;
-          case "cuMmToCuIn": result = value / 16387.064 + " in³"; break;
-          case "sqInToSqMm": result = value * 645.16 + " mm²"; break;
-          case "sqMmToSqIn": result = value / 645.16 + " in²"; break;
-          case "uinToMicron": result = value * 0.0254 + " µm"; break;
-          case "micronToUin": result = value / 0.0254 + " µin"; break;
-          case "micronToMm": result = value / 1000 + " mm"; break;
-          case "mmToMicron": result = value * 1000 + " µm"; break;
-          case "cuMmToMl": result = value / 1000 + " mL"; break;
-          case "mlToCuMm": result = value * 1000 + " mm³"; break;
-          case "kgfcm2ToPsi": result = value * 14.2233 + " psi"; break;
-          case "psiToKgfcm2": result = value / 14.2233 + " kgf/cm²"; break;
-          case "cuInToMl": result = value * 16.3871 + " mL"; break;
-          case "mlToCuIn": result = value / 16.3871 + " in³"; break;
-          default: result = "Unknown conversion type.";
-        }
-      }
-
-      document.getElementById("result").textContent = "Result: " + result;
+<script>
+function convert(){
+  const type=document.getElementById("conversionType").value;
+  const value=parseFloat(document.getElementById("inputValue").value);
+  let result="";
+  if(isNaN(value)){result="Please enter a valid number.";}
+  else{
+    switch(type){
+      case "mmToIn": result=value/25.4+" in"; break;
+      case "inToMm": result=value*25.4+" mm"; break;
+      case "mmToMils": result=value*39.3701+" mils"; break;
+      case "milsToMm": result=value/39.3701+" mm"; break;
+      case "milsToIn": result=value/1000+" in"; break;
+      case "inToMils": result=value*1000+" mils"; break;
+      case "cuInToCuMm": result=value*16387.064+" mm³"; break;
+      case "cuMmToCuIn": result=value/16387.064+" in³"; break;
+      case "sqInToSqMm": result=value*645.16+" mm²"; break;
+      case "sqMmToSqIn": result=value/645.16+" in²"; break;
+      case "uinToMicron": result=value*0.0254+" µm"; break;
+      case "micronToUin": result=value/0.0254+" µin"; break;
+      case "micronToMm": result=value/1000+" mm"; break;
+      case "mmToMicron": result=value*1000+" µm"; break;
+      case "cuMmToMl": result=value/1000+" mL"; break;
+      case "mlToCuMm": result=value*1000+" mm³"; break;
+      case "kgfcm2ToPsi": result=value*14.2233+" psi"; break;
+      case "psiToKgfcm2": result=value/14.2233+" kgf/cm²"; break;
+      case "cuInToMl": result=value*16.3871+" mL"; break;
+      case "mlToCuIn": result=value/16.3871+" in³"; break;
+      default: result="Unknown conversion type.";
     }
-  </script>
+  }
+  document.getElementById("result").textContent="Result: "+result;
+}
+
+const data={
+  "ENIG plating":"Gold = 2-8 μin (0.05 - 0.20 microns) ppk target 1.0\nNickel = 100–320 μin (2.5 - 8 microns) ppk target 1.67",
+  "Hard Gold":"Gold = 2-50 μin (0.050-1.27 microns) ppk target 1.0\nNickel = 40–314 μin (1 - 8 microns) ppk target 1.67",
+  "TIN plating":"275–669 μin (7 - 17 microns) ppk target 1.67",
+  "ImAg plating":"5–15 μin (0.12 - 0.38 microns)",
+  "Vacuum Press":"Standard machine max effective area: 26.5” x 28” (673mm x 711mm)\nLarge machine: 27.5” x 48” (698mm x 1219mm)\nASO: 0.012” (0.3mm)",
+  "Fastlam":"Wabash 6 max effective area: 17” x 17” (431mm x 431mm)\nPasadena: 17.5” x 17.5” (444mm x 444mm)",
+  "Auto Tack":"Max size: 49” x 22” (1244mm x 558mm)\nRegistration: +/- 0.008” (0.20mm)",
+  "UHT":"Max size: 19” x 12.5” (482mm x 317mm)\nFid size: 0.030” - 0.090”\nAccuracy: +/- 0.002” (0.05mm) within 1” (2.54mm)",
+  "Guidehole":"PZ-robo max size: 24” x 20” (609mm x 508mm)",
+  "E-test":"Utron:\nIso Voltage: 10V-250V\nIso Resistance: 10KΩ-20MΩ\nContinuity: 10Ω - 20KΩ",
+  "Hi-Pot":"Cirris 4250:\nIso Voltage: 10V-1500V\nIso Resistance: 5MΩ-1GΩ\nContinuity: 1Ω - 100Ω\nDwell time: 10ms - 120s\n4-wire continuity: 1mΩ—1Ω",
+  "SMT":"Standard panel size: 6” x 6” (152mm x 152mm)\nLong board max size: 47” x 17.5” (1193mm x 444mm)\nMin component size: 0402 (0.4mm x 0.2mm)\nMax component size: 50mm x 40mm\nMax height: 11.5mm\nMax component weight: 8 grams",
+  "Conformal":"Axxon AH50: max size 11.75” x 13.75” (298mm x 349mm)\nAxxon AU99L: max size 35” x 21” (889mm x 533mm)\nAccuracy: +/- 50 microns @ 3σ (x,y)",
+  "Crimping":"FFC Bench Machine for TE MQS terminals\nCrimping force: 15 KN\nSpeed: 3 contacts/sec\nPitch: 1.27mm - 5.08mm"
+};
+
+document.getElementById("processSelect").addEventListener("change",function(){
+  const selected=this.value;
+  document.getElementById("characteristics").textContent=selected?data[selected]:"";
+});
+</script>
 </body>
 </html>
