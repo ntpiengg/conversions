@@ -26,6 +26,8 @@
     <option value="milsToMm">Mils → Millimeter</option>
     <option value="milsToIn">Mils → Inches</option>
     <option value="inToMils">Inches → Mils</option>
+    <option value="sqiTosqf">Square Inches → Square Feet</option>
+    <option value="sqfTosqi">Square Feet → Square Inches</option>
     <option value="cuInToCuMm">Cubic Inches → Cubic Millimeters</option>
     <option value="cuMmToCuIn">Cubic Millimeters → Cubic Inches</option>
     <option value="sqInToSqMm">Square Inches → Square Millimeters</option>
@@ -84,6 +86,8 @@ function convert(){
       case "milsToMm": result=value/39.3701+" mm"; break;
       case "milsToIn": result=value/1000+" in"; break;
       case "inToMils": result=value*1000+" mils"; break;
+      case "sqiTosqf": result=value/144+" sq ft"; break;
+      case "sqfTosqi": result=value*144+" sq in"; break;  
       case "cuInToCuMm": result=value*16387.064+" mm³"; break;
       case "cuMmToCuIn": result=value/16387.064+" in³"; break;
       case "sqInToSqMm": result=value*645.16+" mm²"; break;
@@ -128,3 +132,4 @@ document.getElementById("processSelect").addEventListener("change",function(){
 </script>
 </body>
 </html>
+
